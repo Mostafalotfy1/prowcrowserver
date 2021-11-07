@@ -19,7 +19,7 @@ export default class AuthController {
     const user = await User.create({email:(await data).email , password:(await data).password})
     return response.created(user)
   }
-  public async login({request,response,auth}:HttpContextContract){
+  public async login({request,auth}:HttpContextContract){
     const email = request.input('email')
     const password = request.input('password')
    const token= await auth.attempt(email , password)
